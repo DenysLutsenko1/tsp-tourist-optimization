@@ -33,5 +33,5 @@ cost_per_km = np.round(One_liter_benzin_BDT_coast * fuel_consumption_per_km, 2)
 # Obtaining the final expenditure matrix in BDT
 cost_matrix = np.round(distance_matrix * cost_per_km, 2)
 
-print("Стоимость за 1 км:", cost_per_km, "BDT")
-print("\nМатрица расходов (в BDT):\n", cost_matrix)
+# print("Cost per km:", cost_per_km, "BDT")
+# print("\nExpenditure matrix (in BDT):\n", cost_matrix)
