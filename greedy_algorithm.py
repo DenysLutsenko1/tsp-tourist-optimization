@@ -1,6 +1,8 @@
 import time
 import numpy as np
 
+np.random.seed(40)
+
 # Берем данные из файла data.py
 from data import (
     One_liter_benzin_BDT_coast,
