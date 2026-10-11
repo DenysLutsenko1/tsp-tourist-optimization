@@ -1,5 +1,7 @@
 import time
 import numpy as np
+import csv
+import os
 
 np.random.seed(40)
 
@@ -207,3 +209,65 @@ print("Best tour (city names):", " -> ".join([city_names[i] for i in best_tour])
 print(f"Distance: {best_metrics[0]} km")
 print(f"Time: {best_metrics[1]} min")
 print(f"Cost: {best_metrics[2]} BDT")
+
+
+
+
+
+filename = "algorithm_results.csv"
+algorithm_name = "Particle Swarm Optimization"
+
+# Prepare the new row data
+new_row = [
+    algorithm_name,
+    f"{best_score:.4f}",
+    f"{best_metrics[0]}",
+    f"{best_metrics[1]}",
+    f"{best_metrics[2]}",
+    f"{mean_execution_time:.6f}",
+]
+
+header = [
+    "Algorithm",
+    "Overall Score",
+    "Distance (km)",
+    "Time (min)",
+    "Cost (BDT)",
+    "Mean Exec Time (s)",
+]
+
+rows = []
+algorithm_found = False
+
+# 1. Read existing file data if the file exists
+if os.path.exists(filename):
+    with open(filename, mode="r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        file_header = next(reader, None)
+        if file_header:
+            header = file_header  # Keep the existing CSV header
+
+        for row in reader:
+            if row:
+                # If the algorithm is found, update its record
+                if row[0] == algorithm_name:
+                    rows.append(new_row)
+                    algorithm_found = True
+                else:
+                    # Keep data for other algorithms unchanged
+                    rows.append(row)
+
+# 2. If the algorithm was not present in the file, append it to the list
+if not algorithm_found:
+    rows.append(new_row)
+
+# 3. Rewrite the CSV file with updated rows
+with open(filename, mode="w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+    writer.writerows(rows)
+
+if algorithm_found:
+    print(f"\nResults for '{algorithm_name}' were successfully updated in '{filename}'.")
+else:
+    print(f"\nResults for '{algorithm_name}' were successfully added to '{filename}'.")
