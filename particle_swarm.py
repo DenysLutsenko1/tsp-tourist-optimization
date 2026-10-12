@@ -5,6 +5,8 @@ import os
 
 np.random.seed(40)
 
+from cfg import (w1, w2, w3, city_names, num_runs, num_particles, max_iter)
+
 # Берем данные из файла data.py
 from data import (
     One_liter_benzin_BDT_coast,
@@ -14,31 +16,9 @@ from data import (
     time_matrix,
 )
 
-# Weights for multi-criteria assessment
-w1 = 0.3  # Distance (km)
-w2 = 0.4  # Time (min)
-w3 = 0.3  # Cost (BDT)
-
-# City names
-city_names = [
-    "Chattogram",
-    "Bandorban",
-    "Rangamati",
-    "Khagrachari",
-    "Sajek",
-    "Cox's Bazar",
-    "Teknaf",
-    "Saint Martin",
-]
-
 # Number of cities and starting city
 num_cities = len(distance_matrix)
 start_city = 0  # Chattogram (index 0)
-
-# PSO parameters
-num_particles = 30
-max_iter = 100
-
 
 # input: tour (list of city indices) for example: [0, 1, 2, 3, 4, 5, 6, 7, 0]
 def calculate_metrics(tour):
@@ -172,7 +152,6 @@ def particle_swarm_tsp(start_city=0):
 
 
 # A cycle of 10 algorithm runs to obtain execution time statistics and the best solution.
-num_runs = 10  # Number of runs
 execution_times = []  # time taken for each run
 best_score = float("inf")  # Best multi-objective score
 best_tour = None  # Best tour found

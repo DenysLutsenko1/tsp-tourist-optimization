@@ -5,6 +5,8 @@ import os
 
 np.random.seed(40)
 
+from cfg import (w1, w2, w3, city_names, num_runs, pop_size, generations)
+
 # Берем данные из файла data.py
 from data import (
     One_liter_benzin_BDT_coast,
@@ -13,23 +15,6 @@ from data import (
     fuel_consumption_per_km,
     time_matrix,
 )
-
-# Weights for multi-criteria assessment
-w1 = 0.3  # Distance (km)
-w2 = 0.4  # Time (min)
-w3 = 0.3  # Cost (BDT)
-
-# City names
-city_names = [
-    "Chattogram",
-    "Bandorban",
-    "Rangamati",
-    "Khagrachari",
-    "Sajek",
-    "Cox's Bazar",
-    "Teknaf",
-    "Saint Martin",
-]
 
 n_cities = len(distance_matrix)
 
@@ -72,7 +57,7 @@ def local_search(chrom, start_city=0):
     return best
 
 
-def genetic_algorithm_run(pop_size=50, generations=100, start_city=0):
+def genetic_algorithm_run(pop_size, generations, start_city=0):
     """Genetic algorithm following Algorithm 6 structure from the research article."""
     # Cities to permute (excluding the fixed start city)
     cities = list(range(n_cities))
@@ -165,7 +150,6 @@ def genetic_algorithm_run(pop_size=50, generations=100, start_city=0):
 
 
 # A cycle of 10 algorithm runs to obtain execution time statistics and the best solution.
-num_runs = 10  # Number of runs
 execution_times = []  # time taken for each run
 best_score = float("inf")  # Best multi-objective score
 best_tour = None  # Best tour found
@@ -176,7 +160,7 @@ for run in range(num_runs):
     start_time = time.perf_counter()
 
     # Algorithm execution (the journey starts and ends in Chattogram, index 0)
-    current_tour, score, metrics = genetic_algorithm_run(start_city=0)
+    current_tour, score, metrics = genetic_algorithm_run(pop_size, generations, start_city=0)
     
     end_time = time.perf_counter()
     # how many seconds it took to run the algorithm

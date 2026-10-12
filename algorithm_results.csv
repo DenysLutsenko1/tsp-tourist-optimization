@@ -1,4 +1,4 @@
 Algorithm,Overall Score,Distance (km),Time (min),Cost (BDT),Mean Exec Time (s)
-Genetic Algorithm,4109.2530,835.4,1326,11094.11,0.098435
-Greedy Algorithm,4213.9620,854.8,1380,11351.74,0.000075
-Particle Swarm Optimization,4109.2530,835.4,1326,11094.11,0.091336
+Genetic Algorithm,4109.2530,835.4,1326,11094.11,0.086814
+Greedy Algorithm,4213.9620,854.8,1380,11351.74,0.000113
+Particle Swarm Optimization,4109.2530,835.4,1326,11094.11,0.070607
