@@ -37,11 +37,13 @@ desired_order = [
     'Nearest Neighborhood algorithm',
 ]
 
+# Sort the DataFrame based on the desired order of algorithms
 df['Algorithm'] = pd.Categorical(
     df['Algorithm'], categories=desired_order, ordered=True
 )
 df = df.sort_values('Algorithm').reset_index(drop=True)
 
+# Separate DataFrames for Stochastic and Deterministic methods
 df_stoch = df[df['Type'] == 'Stochastic'].copy()
 df_det = df[df['Type'] == 'Deterministic'].copy()
 
@@ -64,7 +66,9 @@ print('=' * 120)
 
 algos = df['Algorithm'].tolist()
 types = df['Type'].tolist()
+# Create labels for x-axis with algorithm names and types
 labels = [f'{alg}\n({t})' for alg, t in zip(algos, types)]
+# Create x positions for the bars
 x_pos = np.arange(len(algos))
 
 # --- CHART 1: Overall Score ---
@@ -84,24 +88,30 @@ bars1 = plt.bar(
 for bar, t in zip(bars1, types):
   height = bar.get_height()
   plt.annotate(
-      f'{height:.3f}',
-      xy=(bar.get_x() + bar.get_width() / 2, height),
-      xytext=(0, 5),
+      f'{height:.3f}', # Display the score with 3 decimal places
+      xy=(bar.get_x() + bar.get_width() / 2, height), # Position the annotation at the top center of the bar
+      xytext=(0, 5), # Offset the annotation slightly above the bar
       textcoords='offset points',
-      ha='center',
-      va='bottom',
+      ha='center', # Horizontal alignment of the text
+      va='bottom', # Vertical alignment of the text
       fontsize=8,
   )
 
+# Set x-ticks with algorithm names and types, rotated for better readability
 plt.xticks(x_pos, labels, rotation=25, ha='right')
+# Set y-axis label and chart title with bold font weight
 plt.ylabel('Optimized Value / Overall Score')
 plt.title(
     '1. Multi-Objective Optimized Value (Overall Score)', fontweight='bold'
 )
+# Set y-axis limits with a slight offset to ensure bars are fully visible
 plt.ylim(min(scores) * 0.85, max(scores) * 1.12)
+# Add grid lines for better readability of the chart
 plt.grid(axis='y', linestyle='--', alpha=0.5)
+# Adjust layout to prevent clipping of tick-labels and ensure proper spacing
 plt.tight_layout()
 
+# Save the chart to the output directory with a descriptive filename
 chart1_path = os.path.join(output_dir, 'chart_1_score.png')
 plt.savefig(chart1_path, dpi=300)
 print(f'[INFO] Chart 1 successfully saved to {chart1_path}')
@@ -124,7 +134,7 @@ bars2 = plt.bar(
 for bar, t in zip(bars2, types):
   height = bar.get_height()
   plt.annotate(
-      f'{height:.6f}\n({t})'.rstrip('0'),
+      f'{height:.6f}\n({t})'.rstrip('0'), # Display the time with 6 decimal places, remove trailing zeros
       xy=(bar.get_x() + bar.get_width() / 2, height),
       xytext=(0, 6),
       textcoords='offset points',
@@ -155,8 +165,11 @@ plt.show()
 # --- CHART 3: Distance, Time, and Cost with Dual Axes and Clear Spacing ---
 fig, ax1 = plt.subplots(figsize=(16, 6))
 
+# Define spacing and width for the grouped bars
 group_spacing = 1.35
+# Calculate the x positions for the bars with spacing
 x_spaced = x_pos * group_spacing
+# Define the width of each bar
 width = 0.26
 
 distances = df['Distance (km)'].tolist()
@@ -165,7 +178,7 @@ costs = df['Cost (BDT)'].tolist()
 
 # Left axis for Distance and Time with distinct gaps between columns
 b_dist = ax1.bar(
-    x_spaced - width - 0.04,
+    x_spaced - width - 0.04, # Offset the distance bars to the left of the center
     distances,
     width,
     label='Distance (km)',
