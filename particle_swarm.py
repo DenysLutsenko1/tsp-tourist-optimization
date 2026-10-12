@@ -63,7 +63,8 @@ def get_swap_sequence(tour_a, tour_b):
     swaps = []
     temp_tour = list(tour_a)
     # We only consider the cities between the start and end (excluding the first and last city)
-    for i in range(1, num_cities - 1):
+    # for i in range(1, num_cities - 1):
+    for i in range(1, num_cities):
         # If the city at position i in tour_a is not the same as in tour_b, we need to swap it
         if temp_tour[i] != tour_b[i]:
             # Find the index of the city in tour_b that should be at position i
@@ -79,7 +80,8 @@ def apply_swaps(tour, swaps):
     new_tour = list(tour)
     for p1, p2 in swaps:
         # Keep the start/end city fixed at index 0 and the last index
-        if 0 < p1 < num_cities - 1 and 0 < p2 < num_cities - 1:
+        # if 0 < p1 < num_cities - 1 and 0 < p2 < num_cities - 1:
+        if 0 < p1 < num_cities and 0 < p2 < num_cities:
             new_tour[p1], new_tour[p2] = new_tour[p2], new_tour[p1]
     return new_tour
 
@@ -147,7 +149,8 @@ def particle_swarm_tsp(start_city=0):
 
             if np.random.rand() < 0.2:
                 # generate two random indices for cities to swap (excluding the first and last city)
-                idx1, idx2 = np.random.choice(range(1, num_cities - 1), 2, replace=False)
+                # idx1, idx2 = np.random.choice(range(1, num_cities - 1), 2, replace=False)
+                idx1, idx2 = np.random.choice(range(1, num_cities), 2, replace=False)
                 # swap the cities in the particle's tour
                 particles[i][idx1], particles[i][idx2] = particles[i][idx2], particles[i][idx1]
 

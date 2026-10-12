@@ -52,6 +52,26 @@ def calculate_metrics(tour):
     )
 
 
+def local_search(chrom, start_city=0):
+    """Swap-based local search: improves a chromosome until no swap helps."""
+    best = list(chrom)
+    d, t, c = calculate_metrics([start_city] + best + [start_city])
+    best_score = w1 * d + w2 * t + w3 * c
+    improved = True
+    while improved:
+        improved = False
+        for i in range(len(best) - 1):
+            for j in range(i + 1, len(best)):
+                cand = best.copy()
+                cand[i], cand[j] = cand[j], cand[i]
+                d, t, c = calculate_metrics([start_city] + cand + [start_city])
+                s = w1 * d + w2 * t + w3 * c
+                if s < best_score:
+                    best, best_score = cand, s
+                    improved = True
+    return best
+
+
 def genetic_algorithm_run(pop_size=50, generations=100, start_city=0):
     """Genetic algorithm following Algorithm 6 structure from the research article."""
     # Cities to permute (excluding the fixed start city)
@@ -117,6 +137,8 @@ def genetic_algorithm_run(pop_size=50, generations=100, start_city=0):
             offspring_chrom[idx1], offspring_chrom[idx2] = offspring_chrom[idx2], offspring_chrom[idx1]
 
         # Local search (ic)
+        offspring_chrom = local_search(offspring_chrom, start_city)
+
         
         # The fitness of the offspring ic is calculated
         full_offspring_tour = [start_city] + offspring_chrom + [start_city]
