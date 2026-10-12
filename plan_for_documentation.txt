@@ -1,0 +1,35 @@
+
+
+Experimentálna metodológia
+доделать в эксперименты так что бы оно считало: priemeru, mediánu, smerodajnej odchýlky, minima a maxima.
+Experimenty musia byť navrhnuté tak, aby bolo porovnanie metód čo najviac férové. Porovnávané metódy preto majú používať rovnaké:
+problémové inštancie a vstupné dáta
+spôsob vyhodnocovania riešení
+výpočtové obmedzenie, napríklad počet vyhodnotení účelovej funkcie alebo časový limit
+kritériá ukončenia.
+Pri stochastických algoritmoch vykonajte každý experiment opakovane s rôznymi počiatočnými stavmi generátora náhodných čísel. Uveďte počet behov a použité hodnoty seed. Výsledky prezentujte pomocou vhodných súhrnných štatistík, napríklad priemeru, mediánu, smerodajnej odchýlky, minima a maxima.
+
+Zdrojový kód
+skript alebo jednoznačný príkaz na spustenie experimentov;
+súbor so závislosťami (requirements) a ich verziami;
+konfiguračné súbory s použitými parametrami;
+súbor README s návodom na prípravu prostredia a spustenie riešenia.
+
+
+Záverečný report
+abstrakt;
+opis a význam riešeného problému;
+formuláciu optimalizačnej úlohy;
+opis metódy autorov článku;
+opis vašej implementácie alebo vlastného riešenia;
+prehľad rozdielov oproti pôvodnému článku;
+experimentálnu metodológiu;
+dosiahnuté výsledky;
+porovnanie s výsledkami autorov;
+diskusiu výsledkov a možných zdrojov rozdielov;
+obmedzenia vykonaných experimentov;
+záver;
+zoznam použitej literatúry.
+
+Výsledky prezentujte pomocou vhodných tabuliek a grafov. Každá tabuľka a graf musia mať popis a musia byť interpretované v texte.
+
