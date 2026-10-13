@@ -3,7 +3,6 @@ import numpy as np
 import csv
 import os
 
-np.random.seed(40)
 
 from cfg import (w1, w2, w3, city_names, num_runs, num_particles, max_iter)
 
@@ -156,9 +155,11 @@ execution_times = []  # time taken for each run
 best_score = float("inf")  # Best multi-objective score
 best_tour = None  # Best tour found
 best_metrics = None  # Metrics for the best tour
+scores = []
 
 # starting the runs
 for run in range(num_runs):
+    np.random.seed(40 + run)
     start_time = time.perf_counter()
 
     # Algorithm execution (the journey starts and ends in Chattogram, index 0)
@@ -178,9 +179,20 @@ for run in range(num_runs):
         best_score = score
         best_tour = current_tour
         best_metrics = (d, t, c)
+    scores.append(score)
 
 # Calculate the average execution time
 mean_execution_time = np.mean(execution_times)
+
+mean_score = np.mean(scores)
+median_score = np.median(scores)
+std_score = np.std(scores, ddof=0)
+min_score = np.min(scores)
+max_score = np.max(scores)
+
+best_possible = min_score
+success_count = sum(1 for s in scores if round(s, 4) == round(best_possible, 4))
+success_rate = (success_count / num_runs) * 100
 
 # --- Output Results ---
 print("PARTICLE SWARM OPTIMIZATION RESULTS (10 runs)")
@@ -253,3 +265,55 @@ if algorithm_found:
     print(f"\nResults for '{algorithm_name}' were successfully updated in '{filename}'.")
 else:
     print(f"\nResults for '{algorithm_name}' were successfully added to '{filename}'.")
+
+# --- Save or Update Results in stochastic.csv ---
+stochastic_filename = "stochastic.csv"
+
+stochastic_row = [
+    algorithm_name,
+    f"{mean_score:.4f}",
+    f"{median_score:.4f}",
+    f"{std_score:.4f}",
+    f"{min_score:.4f}",
+    f"{max_score:.4f}",
+    f"{success_rate:.2f}%",
+    f"{mean_execution_time:.6f}"
+]
+
+stochastic_header = [
+    "Algorithm",
+    "Mean",
+    "Median",
+    "Std Dev",
+    "Min",
+    "Max",
+    "Success Rate",
+    "Mean Exec Time (s)"
+]
+
+stoc_rows = []
+stoc_algorithm_found = False
+
+if os.path.exists(stochastic_filename):
+    with open(stochastic_filename, mode="r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        file_header = next(reader, None)
+        if file_header:
+            if len(file_header) >= len(stochastic_header):
+                stochastic_header = file_header
+
+        for row in reader:
+            if row:
+                if row[0] == algorithm_name:
+                    stoc_rows.append(stochastic_row)
+                    stoc_algorithm_found = True
+                else:
+                    stoc_rows.append(row)
+
+if not stoc_algorithm_found:
+    stoc_rows.append(stochastic_row)
+
+with open(stochastic_filename, mode="w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerow(stochastic_header)
+    writer.writerows(stoc_rows)

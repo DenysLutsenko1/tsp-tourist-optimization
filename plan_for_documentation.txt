@@ -6,11 +6,15 @@ Experimenty musia byť navrhnuté tak, aby bolo porovnanie metód čo najviac f�
 výpočtové obmedzenie, napríklad počet vyhodnotení účelovej funkcie alebo časový limit
 kritériá ukončenia.
 Pri stochastických algoritmoch vykonajte každý experiment opakovane s rôznymi počiatočnými stavmi generátora náhodných čísel. Uveďte počet behov a použité hodnoty seed. Výsledky prezentujte pomocou vhodných súhrnných štatistík, napríklad priemeru, mediánu, smerodajnej odchýlky, minima a maxima.
+сделать так что бы оно считало еще то что написано а также успешность в алгоритмах по и га сделать так что бы сид менялся 
+а также успешность єто значит то что сколько раз алгоритм нашел самое лучшее решение при каком то сиде 
+
+
 
 Zdrojový kód
 skript alebo jednoznačný príkaz na spustenie experimentov; +Denys
 súbor so závislosťami (requirements) a ich verziami; +Denys
-konfiguračné súbory s použitými parametrami;
+konfiguračné súbory s použitými parametrami; +Denys
 súbor README s návodom na prípravu prostredia a spustenie riešenia. +Denys
 
 
@@ -20,10 +24,10 @@ opis a význam riešeného problému; +Denys
 formuláciu optimalizačnej úlohy; +Denys 
 opis metódy autorov článku; +Denys
 opis vašej implementácie alebo vlastného riešenia; +Denys
-prehľad rozdielov oproti pôvodnému článku; ..
-experimentálnu metodológiu; ..
-dosiahnuté výsledky;
-porovnanie s výsledkami autorov;
+prehľad rozdielov oproti pôvodnému článku; +Denys
+experimentálnu metodológiu; +Denys 
+dosiahnuté výsledky; .......
+porovnanie s výsledkami autorov; ..........
 diskusiu výsledkov a možných zdrojov rozdielov;
 obmedzenia vykonaných experimentov;
 záver;
