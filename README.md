@@ -37,3 +37,5 @@ Všetky súbory sa spúšťajú z koreňového adresára projektu pomocou príka
 * `genetic_algorithm.py` – spustenie genetického algoritmu.
 * `data.py` – uchovávanie údajov o vzdialenostiach, čase a finančných nákladoch. *(Údaje sa pripravia automaticky, preto nie je potrebné spúšťať tento súbor samostatne).*
 * `results.py` – vizualizácia výsledkov.
+* `experiment.py` – čítanie výsledkov a prehľadná vizualizácia metrík vo forme formátovanej tabuľky v termináli.
+* `results.py` – vizualizácia výsledkov.
