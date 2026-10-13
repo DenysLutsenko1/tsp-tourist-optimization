@@ -1,6 +1,6 @@
 
 
-Experimentálna metodológia
+Experimentálna metodológia +Denys
 доделать в эксперименты так что бы оно считало: priemeru, mediánu, smerodajnej odchýlky, minima a maxima.
 Experimenty musia byť navrhnuté tak, aby bolo porovnanie metód čo najviac férové. Porovnávané metódy preto majú používať rovnaké:
 výpočtové obmedzenie, napríklad počet vyhodnotení účelovej funkcie alebo časový limit
