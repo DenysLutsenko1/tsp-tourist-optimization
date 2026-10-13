@@ -1,7 +1,7 @@
 import csv
 import os
 
-def print_table(filename="stochastic.csv"):
+def print_table(filename="results/stochastic.csv"):
     """Reads a CSV file and prints a nicely formatted table to the terminal."""
     if not os.path.exists(filename):
         print(f"File '{filename}' not found!")
@@ -52,4 +52,4 @@ def print_table(filename="stochastic.csv"):
     print()
 
 if __name__ == "__main__":
-    print_table("stochastic.csv")
+    print_table("results/stochastic.csv")

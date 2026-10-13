@@ -206,9 +206,9 @@ print(f"Cost: {best_metrics[2]} BDT")
 
 
 
+os.makedirs("results", exist_ok=True)
 
-
-filename = "algorithm_results.csv"
+filename = "results/algorithm_results.csv"
 algorithm_name = "Particle Swarm Optimization"
 
 # Prepare the new row data
@@ -267,7 +267,7 @@ else:
     print(f"\nResults for '{algorithm_name}' were successfully added to '{filename}'.")
 
 # --- Save or Update Results in stochastic.csv ---
-stochastic_filename = "stochastic.csv"
+stochastic_filename = "results/stochastic.csv"
 
 stochastic_row = [
     algorithm_name,

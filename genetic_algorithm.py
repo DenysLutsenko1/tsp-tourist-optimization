@@ -203,7 +203,9 @@ print(f"Cost: {best_metrics[2]} BDT")
 
 
 # --- Save or Update Results in CSV File ---
-filename = "algorithm_results.csv"
+os.makedirs("results", exist_ok=True)
+
+filename = "results/algorithm_results.csv"
 algorithm_name = "Genetic Algorithm"
 
 # Prepare the new row data
@@ -262,7 +264,7 @@ else:
     print(f"\nResults for '{algorithm_name}' were successfully added to '{filename}'.")
 
 # --- Save or Update Results in stochastic.csv ---
-stochastic_filename = "stochastic.csv"
+stochastic_filename = "results/stochastic.csv"
 
 stochastic_row = [
     algorithm_name,

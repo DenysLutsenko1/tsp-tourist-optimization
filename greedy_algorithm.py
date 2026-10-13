@@ -112,7 +112,9 @@ print(f"Time: {best_metrics[1]} min")
 print(f"Cost: {best_metrics[2]} BDT")
 
 
-filename = "algorithm_results.csv"
+os.makedirs("results", exist_ok=True)
+
+filename = "results/algorithm_results.csv"
 algorithm_name = "Greedy Algorithm"
 
 # Prepare the new row data

@@ -11,7 +11,7 @@ output_dir = 'results_photo'
 os.makedirs(output_dir, exist_ok=True)
 
 # 2. Read data from CSV without normalization
-df = pd.read_csv('algorithm_results.csv')
+df = pd.read_csv('results/algorithm_results.csv')
 
 # Programmatically define algorithm types
 stochastic_algos = [
