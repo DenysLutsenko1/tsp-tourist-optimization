@@ -26,12 +26,12 @@ opis metódy autorov článku; +Denys
 opis vašej implementácie alebo vlastného riešenia; +Denys
 prehľad rozdielov oproti pôvodnému článku; +Denys
 experimentálnu metodológiu; +Denys 
-dosiahnuté výsledky; .......
-porovnanie s výsledkami autorov; ..........
-diskusiu výsledkov a možných zdrojov rozdielov;
-obmedzenia vykonaných experimentov;
-záver;
+dosiahnuté výsledky; +Denys
+porovnanie s výsledkami autorov; +Denys
+diskusiu výsledkov a možných zdrojov rozdielov; +Denys
+obmedzenia vykonaných experimentov; +Denys
+záver;+Denys
 zoznam použitej literatúry.
 
-Výsledky prezentujte pomocou vhodných tabuliek a grafov. Každá tabuľka a graf musia mať popis a musia byť interpretované v texte.
+Výsledky prezentujte pomocou vhodných tabuliek a grafov. Každá tabuľka a graf musia mať popis a musia byť interpretované v texte. +Denys
 
