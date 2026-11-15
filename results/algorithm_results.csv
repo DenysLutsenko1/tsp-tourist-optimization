@@ -1,7 +1,10 @@
 Algorithm,Overall Score,Distance (km),Time (min),Cost (BDT),Mean Exec Time (s)
-Genetic Algorithm,4109.2530,835.4,1326,11094.11,0.087505
-Greedy Algorithm,4213.9620,854.8,1380,11351.74,0.000092
-Particle Swarm Optimization,4109.2530,835.4,1326,11094.11,0.065069
-Dynamic Programming,4109.2530,835.4,1326.0,11094.11,0.000807
-Brute force Algorithm,4109.2530,835.4,1326.0,11094.11,0.008215
-Simulated Annealing,4109.2530,835.4,1326.0,11094.11,0.036586
+Greedy Algorithm,4213.9620,854.8,1380,11351.74,0.000086
+Genetic Algorithm,4109.2530,835.4,1326,11094.11,0.054334
+Particle Swarm Optimization,4109.2530,835.4,1326,11094.11,0.044645
+Ant Colony Optimization,4109.2530,835.4,1326.0,11094.11,0.305129
+Simulated Annealing,4109.2530,835.4,1326.0,11094.11,0.036262
+Brute force Algorithm,4109.2530,835.4,1326.0,11094.11,0.007645
+Branch & bound Algorithm,4109.2530,835.4,1326.0,11094.11,0.004682
+Dynamic Programming,4109.2530,835.4,1326.0,11094.11,0.000819
+Nearest Neighborhood algorithm,4213.9620,854.8,1380.0,11351.74,0.000015
